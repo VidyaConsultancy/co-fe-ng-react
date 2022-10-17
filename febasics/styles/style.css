@@ -1,0 +1,14 @@
+body {
+  transition: all ease 100ms;
+  -webkit-transition: all ease 100ms;
+  -moz-transition: all ease 100ms;
+  -o-transition: all ease 100ms;
+  -ms-transition: all ease 100ms;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  left: -5000px;
+  visibility: hidden;
+}

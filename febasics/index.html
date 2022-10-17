@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <!-- span -->
+  <div id="header" class="header" style="width: 80%; background-color: #f8f8f8;">
+    <!-- Navigation -->
+    <div
+      id="navbar"
+      class="navbar"
+      style="background-color: tomato;"
+      role="navigation"
+    >
+    Navbar
+    </div>
+  </div>
+  <!-- content -->
+  <!-- ARIA attributes -->
+  <div id="content" class="main-content" aria-label="content">
+    <p aria-labelledby="content"><span>hello world</span> <a href="https://google.com" target="_blank">Google</a> <img src="https://source.unsplash.com/random" alt="" width="100" height="100"></p>
+    <figure>
+      <img src="" alt="">
+      <figcaption></figcaption>
+    </figure>
+    <form action="" method="post">
+      <input type="hidden" name="_method" value="put">
+      <label for="uname" class="sr-only">Enter a name</label>
+      <input type="text" id="uname" name="uname" placeholder="enter a name">
+      <input type="email" name="uemail" placeholder="enter your email"> <!-- text, email, password, search, radio, checkbox, range, date, datetime, time, etc.  -->
+      <input type="password" name="upass" placeholder="enter a password">
+      <input type="search" name="search" id="search" placeholder="enter a keyword">
+      <input type="color" name="color">
+      <input type="submit" value="Submit">
+    </form>
+    <button class="btn btn-primary" onclick="handleOnClickOnClickMeBtn(event)">Click Me</button>
+    <button class="btn btn-default" id="showMore" data-id="showMoreBtn">Show More</button>
+  </div>
+  <!-- footer -->
+  <div id="footer" class="footer"></div>
+  <script>
+    console.log('script tag init');
+    function handleOnClickOnClickMeBtn(e) {
+      console.log('click me button clicked', e)
+      // anotherfun();
+    }
+    const showMoreBtn = document.getElementById('showMore');
+    showMoreBtn.addEventListener('click', function(e) {
+      console.log('show more btn clicked', e);
+      e.target.innerText = 'Show less';
+      e.target.classList.add('btn-block');
+      const title = document.createElement('h4');
+      title.innerText = 'Dynamically generated heading element';
+      document.body.appendChild(title);
+      const btns = document.getElementsByClassName('btn');
+      btns[0].remove();
+    })
+    showMoreBtn.addEventListener('click', function (e) {
+      console.log('second')
+    })
+    document.querySelector('.btn')
+    document.querySelectorAll('.btn')
+    document.querySelectorAll("[data-id='showMoreBtn']")
+    showMoreBtn.onclick = function(e) {
+      console.log('show more btn clicked; logging from another event handler', e)
+    }
+    showMoreBtn.onclick = function(e) {
+      console.log('show more btn clicked; logging in third', e)
+    }
+  </script>
+</body>
+</html>
