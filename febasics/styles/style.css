@@ -1,14 +1,169 @@
-body {
-  transition: all ease 100ms;
-  -webkit-transition: all ease 100ms;
-  -moz-transition: all ease 100ms;
-  -o-transition: all ease 100ms;
-  -ms-transition: all ease 100ms;
+/*
+ Selectors
+ - universal *
+ - basic selector
+  - tag/element
+  - id
+  - class
+ - combination selector
+*/
+
+/*
+(id, class, element)
+*/
+
+* {
+  border: 1px solid yellowgreen;
+  margin: 2px;
 }
+/* (0, 0, 1) */
+body {
+  margin: 0;
+  background-color: #fff8f8;
+}
+
+div {
+  border: 1px solid lime;
+}
+/* (1, 0, 0) */
+.section.section-home {
+  font-size: 20px;
+  padding: 20px 1em 4em 3em;
+  color: blue;
+}
+
+.col-1 {
+  padding: 1em 2em;
+}
+.col {
+  padding: 0 1em;
+}
+/* 
+padding-top
+padding-right
+padding-bottom
+padding-left
+*/
+
 .sr-only {
   position: absolute;
   height: 1px;
   width: 1px;
   left: -5000px;
   visibility: hidden;
+}
+
+/* child selector */
+.section h2 {
+  font-size: 20px;
+}
+.section > h2 {
+  font-size: 40px;
+}
+.section .row h2 {
+  font-size: 30px;
+}
+.row .h2-heading {
+  font-size: 12px;
+}
+.h2-heading {
+  font-size: 11px;
+}
+.row > .col {
+  padding: 16px;
+}
+.col + .col {
+  margin-top: 20px;
+}
+.col ~ .col {
+  background-color: white;
+}
+
+/* Pseudo */
+/* class */
+/* elements */
+.col:hover,
+.col:focus {
+  background-color: red;
+}
+
+.row p::first-letter {
+  font-size: 50px;
+}
+
+.row p::first-line {
+  font-style: italic;
+}
+
+a {
+  position: relative;
+}
+
+a::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: tomato;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+a::before {
+  content: "Awesome";
+  background-color: black;
+  color: white;
+}
+
+.row :first-child, .row :last-child, .row :nth-child(3) {
+  border: 4px solid #dbdbdb;
+}
+
+tr:nth-child(odd) td:first-child {
+  background-color: #dbdbdb;
+}
+/* tr:nth-child(even) {
+  background-color: #ff38ff;
+} */
+
+.row hr:first-of-type {
+  margin: 1em 0;
+}
+
+.row hr:last-of-type {
+  border-width: 4px;
+}
+
+.row .col:nth-of-type(2) {
+  transform: scale(0.9);
+}
+
+[title] {
+  text-decoration: line-through;
+}
+
+[title="first"] {
+  text-decoration: overline;
+}
+
+[title^="first"] {
+  text-decoration: underline;
+}
+
+[title$="ing"] {
+  color: pink;
+}
+
+[title~="head"] {
+  color: turquoise;
+}
+
+[title*="head"] {
+  color: purple;
+}
+
+[title|="first"] {
+  color: rgb(47, 110, 67);
 }

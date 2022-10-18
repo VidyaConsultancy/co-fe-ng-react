@@ -39,6 +39,7 @@
       <input type="color" name="color">
       <input type="submit" value="Submit">
     </form>
+    <!-- onclick="handleOnClickOnClickMeBtn(event)" handling events from html side -->
     <button class="btn btn-primary" onclick="handleOnClickOnClickMeBtn(event)">Click Me</button>
     <button class="btn btn-default" id="showMore" data-id="showMoreBtn">Show More</button>
   </div>
@@ -51,6 +52,7 @@
       // anotherfun();
     }
     const showMoreBtn = document.getElementById('showMore');
+    /* listening for click event on show more button from javascript end */
     showMoreBtn.addEventListener('click', function(e) {
       console.log('show more btn clicked', e);
       e.target.innerText = 'Show less';
@@ -64,9 +66,11 @@
     showMoreBtn.addEventListener('click', function (e) {
       console.log('second')
     })
+    // general element selector api using querySelector/querySelectorAll functions
     document.querySelector('.btn')
     document.querySelectorAll('.btn')
     document.querySelectorAll("[data-id='showMoreBtn']")
+    /* second way for listening for click event on show more button from javascript end */
     showMoreBtn.onclick = function(e) {
       console.log('show more btn clicked; logging from another event handler', e)
     }
