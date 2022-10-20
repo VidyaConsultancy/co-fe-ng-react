@@ -1,3 +1,14 @@
-import Orgniazation, { PI } from "./company";
+import Com, {PI} from "./company";
 
-const mojo = new Orgniazation("Mojo", "Dojo Mojo");
+// decorators
+@decorator
+function decorators(target) {
+    
+}
+
+function wrapperToMyDeco({}) {
+  return function decorators(target) {
+
+  }
+}
+@decoratorFun()
