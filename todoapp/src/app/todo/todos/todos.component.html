@@ -1,13 +1,13 @@
-<div class="container">
-  <h3 [title]="appTitle">{{ appTitle }}</h3>
-  <ul *ngIf="todos.length">
-    <li *ngFor="let todo of todos" [ngStyle]="{ color: todo.isCompleted ? 'orange' : color }" [ngClass]="{'todo--completed': todo.isCompleted }">
+<div class="app-todos">
+  <h3 [title]="appTitle" class="todos-title">{{ appTitle }}</h3>
+  <ul *ngIf="todos.length" class="todos">
+    <li class="todos-item" *ngFor="let todo of todos" [ngStyle]="{ color: todo.isCompleted ? 'orange' : color }" [ngClass]="{'todo--completed': todo.isCompleted }">
       {{ todo.todo }}
     </li>
   </ul>
-  <div *ngIf="todos.length === 0">You don't have any todos yet. Get started here <button>Add Todo</button></div>
+  <div *ngIf="todos.length === 0">You don't have any todos yet. Get started here <button class="button">Add Todo</button></div>
   <form class="todo-add-form" (ngSubmit)="handleAddTodo()">
-    <input type="text" name="todo" id="todo" placeholder="What do you want to do?" [(ngModel)]="newTodo">
-    <button *ngIf="todos.length">Add Todo</button>
+    <input type="text" name="todo" id="todo" placeholder="What do you want to do?" [(ngModel)]="newTodo" class="form-input">
+    <button *ngIf="todos.length" class="button">Add Todo</button>
   </form>
 </div>

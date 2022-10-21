@@ -1,1 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: sans-serif;
+  color: #212121;
+}
+
+a, a:hover, a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  left: -5000px;
+  height: 1px;
+  width: 1px;
+  visibility: hidden;
+}
+
+.form-input {
+  font-size: 1rem;
+  padding: 0.35em 0.5em;
+  background-color: #fff;
+  border-color: transparent;
+  border-style: inset;
+  border-radius: 0;
+}
+
+.button {
+  font-size: 0.9rem;
+  font-family: monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.35em 1em;
+  border-width: 1px;
+  border-radius: 0;
+  background-color: #212121;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color ease-in 350ms;
+}
+
+.button:hover, .button:focus {
+  background-color: #5a5a5a;
+}
