@@ -1,0 +1,9 @@
+<div class="container">
+  <h3>{{ appTitle }}</h3>
+  <ul>
+    <li *ngFor="let todo of todos">
+      {{ todo.todo }}
+      <span *ngIf="todo.isCompleted">Completed</span>
+    </li>
+  </ul>
+</div>
