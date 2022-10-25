@@ -92,6 +92,19 @@ a, a:hover, a:focus {
   visibility: hidden;
 }
 
+.form-flex {
+  display: flex;
+  align-items: center;
+}
+
+.form-group {
+  flex: 1;
+}
+
+.form-group + .form-group {
+  margin-top: 1em;
+}
+
 .form-input {
   font-size: 1rem;
   padding: 0.35em 0.5em;
@@ -99,6 +112,7 @@ a, a:hover, a:focus {
   border-color: transparent;
   border-style: inset;
   border-radius: 0;
+  width: 100%;
 }
 
 .button {

@@ -1,24 +1,11 @@
 .app-todos {
   display: grid;
-  place-content: center;
   padding: 2em;
+  width: min(500px, 60%);
+  margin-inline: auto;
 }
-.todos-title {
+app-todo-header {
+  padding-bottom: 0.5em;
   background-color: #fff;
-  text-align: center;
-  font-size: 2rem;
-  font-family: monospace;
-  padding: 0.25em 1em;
-}
-.todos {
-  background-color: #fffff8;
-  margin: 0;
-  list-style: none;
-  padding: 0;
-}
-.todos-item {
-  padding: 0.5em 1em;
-}
-.todos-item {
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 3px double #dbdbdb;
 }

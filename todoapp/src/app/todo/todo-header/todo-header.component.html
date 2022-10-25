@@ -6,15 +6,20 @@
   class="todo-add-form"
   (ngSubmit)="handleAddTodo()"
 >
-  <input
-    type="text"
-    name="todo"
-    id="todo"
-    placeholder="What do you want to do?"
-    [(ngModel)]="newTodo"
-    class="form-input"
-  >
-  <button
-    class="button"
-  >Add Todo</button>
+  <div class="form-flex">
+    <div class="form-group">
+      <label for="todo" class="sr-only">Add todo item</label>
+      <input
+        type="text"
+        name="todo"
+        id="todo"
+        placeholder="What do you want to do?"
+        [(ngModel)]="newTodo"
+        class="form-input"
+      >
+    </div>
+    <button
+      class="button"
+    >Add Todo</button>
+  </div>
 </form>
