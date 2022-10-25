@@ -1,3 +1,10 @@
-<div *ngIf="todo">
-  {{todo.todo }}
+<div *ngIf="todo" class="todo">
+  <label class="todo-toggle" [for]="todo.id">
+    <input type="checkbox" name="todo-toggle" [id]="todo.id">
+    {{todo.todo }}
+  </label>
+  <div class="todo-actions">
+    <button class="button button-icon button-info" (click)="handleEditTodo()">Edit</button>
+    <button class="button button-icon button-danger" (click)="handleDeleteTodo()">Del</button>
+  </div>
 </div>

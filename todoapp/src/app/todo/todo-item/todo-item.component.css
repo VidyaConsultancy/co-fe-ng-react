@@ -1,0 +1,9 @@
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todo-toggle {
+  flex: 1;
+  cursor: pointer;
+}

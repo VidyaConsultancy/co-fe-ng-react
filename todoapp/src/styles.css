@@ -132,3 +132,11 @@ a, a:hover, a:focus {
 .button:hover, .button:focus {
   background-color: #5a5a5a;
 }
+
+.button.button-info {
+  background-color: blue;
+}
+
+.button.button-danger {
+  background-color: red;
+}

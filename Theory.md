@@ -20,6 +20,10 @@ npm install --save-dev package-name
 - @Pipe - Pipe
 - @Injectable - Service
 
+## ng cli
+**generate a module with routing**
+`npx ng g m auth --routing --route auth --module app.module`
+
 ## Angular Service
 **providedIn** metadata
 - `root` - service will be singleton
