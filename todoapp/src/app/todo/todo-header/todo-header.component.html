@@ -1,0 +1,20 @@
+<h3
+  [title]="title"
+  class="todos-title"
+>{{ title }}</h3>
+<form
+  class="todo-add-form"
+  (ngSubmit)="handleAddTodo()"
+>
+  <input
+    type="text"
+    name="todo"
+    id="todo"
+    placeholder="What do you want to do?"
+    [(ngModel)]="newTodo"
+    class="form-input"
+  >
+  <button
+    class="button"
+  >Add Todo</button>
+</form>

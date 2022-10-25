@@ -1,0 +1,13 @@
+<ul
+  *ngIf="todos && todos.length"
+  class="todos"
+>
+  <li
+    class="todos-item"
+    *ngFor="let todo of todos"
+    [ngClass]="{'todo--completed': todo.isCompleted }"
+  >
+    <app-todo-item [todo]="todo"></app-todo-item>
+  </li>
+</ul>
+<div *ngIf="todos && todos.length === 0">You don't have any todos yet. Get started here <button class="button">Add Todo</button></div>

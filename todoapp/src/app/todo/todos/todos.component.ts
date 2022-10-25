@@ -17,19 +17,24 @@ export class TodosComponent implements OnInit {
     new Todo(5, 'Learn Angular', false),
     new Todo(6, 'Learn React', false),
   ];
-  public color: string = 'blue';
-  public newTodo: string = '';
+  public completed: number = 0;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.calculateCompletedTodos();
+  }
 
-  handleAddTodo() {
-    if(this.newTodo.trim().length === 0) {
-      alert('Incorrect input');
+  handleAddTodo(newTodo: string) {
+    if(newTodo.trim().length === 0) {
       return;
     }
-    this.todos.push(new Todo(this.todos.length + 1, this.newTodo))
-    this.newTodo = '';
+    this.todos.push(new Todo(this.todos.length + 1, newTodo))
+    this.calculateCompletedTodos();
+  }
+
+  calculateCompletedTodos() {
+    const completedTodos = this.todos.filter(todo => todo.isCompleted);
+    this.completed = completedTodos.length;
   }
 }
