@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Todo } from '../models/todo.class';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -19,7 +20,7 @@ export class TodosComponent implements OnInit {
   ];
   public completed: number = 0;
 
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
     this.calculateCompletedTodos();
@@ -30,6 +31,7 @@ export class TodosComponent implements OnInit {
       return;
     }
     this.todos.push(new Todo(this.todos.length + 1, newTodo))
+    this.todoService.createTodo(newTodo);
     this.calculateCompletedTodos();
   }
 
