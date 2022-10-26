@@ -1,5 +1,5 @@
 <div class="app-auth app-signin">
-  <form class="form-signin">
+  <form class="form-signin" (ngSubmit)="handleLogin()" [formGroup]="userForm">
     <div class="form-group">
       <label
         for="username"
@@ -12,6 +12,7 @@
         class="form-input"
         placeholder="Here your email"
         autocomplete="username"
+        formControlName="email"
       >
     </div>
     <div class="form-group">
@@ -26,12 +27,14 @@
         class="form-input"
         placeholder="Here your password"
         autocomplete="current-password"
+        formControlName="password"
       >
     </div>
     <div class="form-group text-center">
       <button
         type="submit"
         class="button"
+        [disabled]="userForm.invalid"
       >Login</button>
     </div>
     <div class="form-group"><span>Don't have an account <a

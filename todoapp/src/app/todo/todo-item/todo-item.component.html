@@ -1,11 +1,13 @@
 <div *ngIf="todo" class="todo">
   <label class="todo-toggle" [for]="todo.id">
-    <input type="checkbox" name="todo-toggle" [id]="todo.id">
-    {{todo.todo }}
+    <input type="checkbox" name="todo-toggle" [id]="todo.id" [checked]="todo.isCompleted" (change)="handleTodoToggle($event)" />
+    <span *ngIf="!isEditing">{{todo.todo }}</span>
+    <input *ngIf="isEditing" type="text" [(ngModel)]="updatedTodo" />
   </label>
   <div class="todo-actions">
     <a class="button button-icon" [routerLink]="['/todos', todo.id]" *ngIf="!isDetail">Detail</a>
-    <button class="button button-icon button-info" (click)="handleEditTodo()">Edit</button>
+    <button class="button button-icon button-info" (click)="handleEditTodo()" *ngIf="!isEditing">Edit</button>
+    <button class="button button-icon button-info" (click)="handleUpdateTodo()" *ngIf="isEditing">Save</button>
     <button class="button button-icon button-danger" (click)="handleDeleteTodo()">Del</button>
   </div>
 </div>

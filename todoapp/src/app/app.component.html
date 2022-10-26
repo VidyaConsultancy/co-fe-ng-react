@@ -4,8 +4,9 @@
       <a routerLink="/" class="logo">Todo</a>
       <menu class="navbar">
         <li class="nav-item"><a routerLink="/" class="nav-link">Home</a></li>
-        <li class="nav-item"><a routerLink="/todos" class="nav-link">Todo</a></li>
-        <li class="nav-item"><a routerLink="/auth/register" class="nav-link">Register</a></li>
+        <li class="nav-item" *ngIf="isAuthorized"><a routerLink="/todos" class="nav-link">Todo</a></li>
+        <li class="nav-item" *ngIf="isAuthorized"><button routerLink="/todos" class="nav-link button" (click)="logout()">Logout</button></li>
+        <li class="nav-item" *ngIf="!isAuthorized"><a routerLink="/auth/register" class="nav-link">Register</a></li>
       </menu>
     </nav>
   </header>

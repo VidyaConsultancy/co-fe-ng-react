@@ -14,15 +14,40 @@ export class TodoItemComponent implements OnInit {
   @Output('editTodo') editTodo: EventEmitter<number> = new EventEmitter();
   @Output('deleteTodo') deleteTodo: EventEmitter<number> = new EventEmitter();
 
+  updatedTodo: string = '';
+  isEditing: boolean = false;
+
   constructor(private todoService: TodoService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  handleEditTodo() {}
+  handleEditTodo() {
+    this.isEditing = true;
+    this.updatedTodo = this.todo.todo;
+  }
+
+  handleUpdateTodo() {
+    if (!this.updatedTodo) return;
+    this.todoService
+      .updateTodo({ ...this.todo, todo: this.updatedTodo })
+      .subscribe((res) => {
+        console.log(res);
+        this.isEditing = false;
+        this.updatedTodo = '';
+      });
+  }
 
   handleDeleteTodo() {
     this.todoService.deleteTodo(this.todo.id).subscribe(() => {
       this.router.navigateByUrl('/todos');
-    })
+    });
+  }
+
+  handleTodoToggle(event: any) {
+    this.todoService
+      .updateTodo({ ...this.todo, isCompleted: event.target.checked })
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }

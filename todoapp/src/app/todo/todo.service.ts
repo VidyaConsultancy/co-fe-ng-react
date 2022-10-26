@@ -26,4 +26,8 @@ export class TodoService {
   deleteTodo(id: number) {
     return this.http.delete(`http://localhost:3000/todos/${id}`)
   }
+
+  updateTodo(todo: Todo) {
+    return this.http.put<Todo>(`http://localhost:3000/todos/${todo.id}`, todo);
+  }
 }

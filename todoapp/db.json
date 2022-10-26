@@ -14,12 +14,12 @@
   "todos": [
     {
       "todo": "Learn HTML",
-      "isCompleted": false,
+      "isCompleted": true,
       "id": 1
     },
     {
       "todo": "Learn JS",
-      "isCompleted": false,
+      "isCompleted": true,
       "id": 3
     },
     {
@@ -28,8 +28,8 @@
       "id": 4
     },
     {
-      "todo": "Learn Angular",
-      "isCompleted": false,
+      "todo": "Learn Angular 10",
+      "isCompleted": true,
       "id": 5
     }
   ]

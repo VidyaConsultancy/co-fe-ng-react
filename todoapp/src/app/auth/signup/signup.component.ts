@@ -41,6 +41,7 @@ export class SignupComponent implements OnInit {
       return;
     }
     this.authService.register(this.userForm.value).subscribe((res) => {
+      this.authService.setAccessToken(res.accessToken);
       localStorage.setItem('accessToken', res.accessToken);
       localStorage.setItem('user', JSON.stringify(res.user));
       this.userForm.reset();
