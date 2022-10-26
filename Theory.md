@@ -24,6 +24,9 @@ npm install --save-dev package-name
 **generate a module with routing**
 `npx ng g m auth --routing --route auth --module app.module`
 
+**generate guard**
+`npx ng g guard guards/auth/auth`
+
 ## Angular Service
 **providedIn** metadata
 - `root` - service will be singleton

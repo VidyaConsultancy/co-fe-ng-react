@@ -1,12 +1,19 @@
-<div class="app-signup">
-  <form class="form-signup">
+<div class="app-auth app-signup">
+  <form class="form-signup" (ngSubmit)="handleRegister()" [formGroup]="userForm">
     <div class="form-group">
       <label for="username" class="sr-only">Enter your email</label>
-      <input type="email" id="username" name="username" class="form-input" placeholder="Here your email">
+      <input type="email" id="username" name="username" class="form-input" placeholder="Here your email" autocomplete="username" formControlName="usernameUF">
+      <small class="form-error" *ngIf="userForm.get('usernameUF')?.dirty && userForm.get('usernameUF')?.errors">
+        Username is required, Username should be a valid email
+      </small>
     </div>
     <div class="form-group">
       <label for="password" class="sr-only">Create a password</label>
-      <input type="password" id="password" name="password" class="form-input" placeholder="Here your password">
+      <input type="password" id="password" name="password" class="form-input" placeholder="Here your password" autocomplete="current-password" formControlName="passwordUF">
     </div>
+    <div class="form-group text-center">
+      <button type="submit" class="button" [disabled]="userForm.invalid">Register</button>
+    </div>
+    <div class="form-group"><span>Already have an account <a type="button" class="button" routerLink="/auth/login">Login</a></span></div>
   </form>
 </div>

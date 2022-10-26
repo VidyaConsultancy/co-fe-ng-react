@@ -1,0 +1,14 @@
+.app-todo {
+  padding: 2em 2em;
+}
+
+.todo-detail {
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+.button-wrapper {
+  padding-block: 1em;
+  margin-bottom: 2em;
+}

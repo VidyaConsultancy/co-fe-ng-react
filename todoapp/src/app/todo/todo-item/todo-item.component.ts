@@ -8,6 +8,7 @@ import { Todo } from '../models/todo.class';
 })
 export class TodoItemComponent implements OnInit {
   @Input('todo') todo?: Todo;
+  @Input('isDetail') isDetail?: boolean;
   @Output('editTodo') editTodo: EventEmitter<number> = new EventEmitter();
   @Output('deleteTodo') deleteTodo: EventEmitter<number> = new EventEmitter();
 

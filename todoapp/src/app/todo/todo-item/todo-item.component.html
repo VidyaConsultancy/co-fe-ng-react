@@ -4,6 +4,7 @@
     {{todo.todo }}
   </label>
   <div class="todo-actions">
+    <a class="button button-icon" [routerLink]="['/todos', todo.id]" *ngIf="!isDetail">Detail</a>
     <button class="button button-icon button-info" (click)="handleEditTodo()">Edit</button>
     <button class="button button-icon button-danger" (click)="handleDeleteTodo()">Del</button>
   </div>

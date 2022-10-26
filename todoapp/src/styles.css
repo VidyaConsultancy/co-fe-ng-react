@@ -116,17 +116,18 @@ a, a:hover, a:focus {
 }
 
 .button {
+  display: inline-block;
   font-size: 0.9rem;
   font-family: monospace;
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 0.35em 1em;
-  border-width: 1px;
+  border: 1px solid transparent;
   border-radius: 0;
   background-color: #212121;
   color: #fff;
   cursor: pointer;
-  transition: background-color ease-in 350ms;
+  transition: background-color ease-in 350ms, color ease-out 350ms;
 }
 
 .button:hover, .button:focus {
@@ -139,4 +140,27 @@ a, a:hover, a:focus {
 
 .button.button-danger {
   background-color: red;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: #ddd;
+  color: #212121;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.app-auth {
+  padding: 2em;
+  background-color: #fff8ff;
+  width: min(100%, 450px);
+  margin: 2em auto 0;
+}
+
+.form-error {
+  color: red;
+  font-size: 0.8rem;
 }

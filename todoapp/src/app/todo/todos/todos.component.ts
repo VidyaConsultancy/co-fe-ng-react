@@ -10,19 +10,13 @@ import { TodoService } from '../todo.service';
 })
 export class TodosComponent implements OnInit {
   public appTitle: string = 'Todos';
-  public todos: Todo[] = [
-    new Todo(1, 'Learn HTML', true),
-    new Todo(2, 'Learn CSS', true),
-    new Todo(3, 'Learn Javascript', false),
-    new Todo(4, 'Learn ES6', true),
-    new Todo(5, 'Learn Angular', false),
-    new Todo(6, 'Learn React', false),
-  ];
+  public todos: Todo[] = [];
   public completed: number = 0;
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
+    this.todos = this.todoService.getTodos();
     this.calculateCompletedTodos();
   }
 

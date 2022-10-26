@@ -1,4 +1,4 @@
-<div class="app-signin">
+<div class="app-auth app-signin">
   <form class="form-signin">
     <div class="form-group">
       <label
@@ -11,6 +11,7 @@
         name="username"
         class="form-input"
         placeholder="Here your email"
+        autocomplete="username"
       >
     </div>
     <div class="form-group">
@@ -24,7 +25,19 @@
         name="password"
         class="form-input"
         placeholder="Here your password"
+        autocomplete="current-password"
       >
     </div>
+    <div class="form-group text-center">
+      <button
+        type="submit"
+        class="button"
+      >Login</button>
+    </div>
+    <div class="form-group"><span>Don't have an account <a
+          type="button"
+          class="button"
+          routerLink="/auth/register"
+        >Register</a></span></div>
   </form>
 </div>
