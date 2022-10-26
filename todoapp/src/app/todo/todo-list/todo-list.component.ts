@@ -7,7 +7,7 @@ import { Todo } from '../models/todo.class';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  @Input('todos') todos?: Todo[];
+  @Input('todos') todos: Todo[];
 
   constructor() { }
 

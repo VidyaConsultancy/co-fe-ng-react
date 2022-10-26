@@ -16,21 +16,27 @@ export class TodosComponent implements OnInit {
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.todos = this.todoService.getTodos();
-    this.calculateCompletedTodos();
+    this.fetchTodos();
   }
 
   handleAddTodo(newTodo: string) {
     if(newTodo.trim().length === 0) {
       return;
     }
-    this.todos.push(new Todo(this.todos.length + 1, newTodo))
-    this.todoService.createTodo(newTodo);
-    this.calculateCompletedTodos();
+    this.todoService.createTodo(newTodo).subscribe((res) => {
+      this.fetchTodos();
+    });
   }
 
   calculateCompletedTodos() {
     const completedTodos = this.todos.filter(todo => todo.isCompleted);
     this.completed = completedTodos.length;
+  }
+
+  fetchTodos() {
+    this.todoService.getTodos().subscribe((res) => {
+      this.todos = res;
+      this.calculateCompletedTodos();
+    });
   }
 }

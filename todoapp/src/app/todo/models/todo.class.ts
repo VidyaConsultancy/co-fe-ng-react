@@ -1,6 +1,6 @@
 export class Todo {
+  public id: number;
   constructor(
-    public id: number,
     public todo: string,
     public isCompleted: boolean = false
   ) {}

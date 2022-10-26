@@ -9,8 +9,8 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./todo-detail.component.css'],
 })
 export class TodoDetailComponent implements OnInit {
-  public todoId?: number;
-  public todo?: Todo;
+  public todoId: number;
+  public todo: Todo;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +21,9 @@ export class TodoDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.todoId = +params['id'];
-      this.todo = this.todoService.getTodoById(this.todoId)
+      this.todoService.getTodoById(this.todoId).subscribe((res) => {
+        this.todo = res;
+      })
     });
   }
 

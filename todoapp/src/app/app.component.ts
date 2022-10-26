@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { TodoService } from './todo/todo.service';
 
 @Component({
@@ -8,10 +9,21 @@ import { TodoService } from './todo/todo.service';
 })
 export class AppComponent {
   public title = 'todoapp';
+  public obs: BehaviorSubject<number>;
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService) {
+    this.obs = new BehaviorSubject(0);
+    this.obs.subscribe((value) => {
+      console.log('sub1', value);
+    })
+    this.obs.next(10);
+  }
 
   public getTodos() {
     console.log(this.todoService.getTodos())
+    this.obs.subscribe((value) => {
+      console.log('sub2', value);
+    });
+    this.obs.next(20);
   }
 }

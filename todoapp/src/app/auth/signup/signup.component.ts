@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,6 +9,8 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
+  public userForm: FormGroup;
+  /* 
   public username: FormControl = new FormControl('', [
     Validators.email,
     Validators.required,
@@ -15,8 +19,7 @@ export class SignupComponent implements OnInit {
     Validators.required,
     Validators.minLength(8),
   ]);
-  public userForm: FormGroup;
-  /* public userForm: FormGroup = new FormGroup({
+  public userForm: FormGroup = new FormGroup({
     usernameUF: new FormControl('', [Validators.email, Validators.required]),
     passwordUF: new FormControl('', [
       Validators.required,
@@ -24,16 +27,24 @@ export class SignupComponent implements OnInit {
     ]),
   }); */
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.userForm = this.fb.group({
-      usernameUF: ['', [Validators.email, Validators.required]],
-      passwordUF: ['', [Validators.required, Validators.minLength(8)]],
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   ngOnInit(): void {}
 
   handleRegister() {
-    console.log(this.userForm.value);
+    if(this.userForm.invalid) {
+      return;
+    }
+    this.authService.register(this.userForm.value).subscribe((res) => {
+      localStorage.setItem('accessToken', res.accessToken);
+      localStorage.setItem('user', JSON.stringify(res.user));
+      this.userForm.reset();
+      this.router.navigateByUrl('/todos');
+    })
   }
 }

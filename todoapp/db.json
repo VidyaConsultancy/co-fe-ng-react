@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "email": "john.doe@mailinator.com",
+      "password": "$2a$10$9vdMgLgOIlmT/SXLls7Bm.ktF.rMfC5ZYh8piFCtdknDDqZRHtZuy",
+      "id": 1
+    },
+    {
+      "email": "jane.doe@mailinator.com",
+      "password": "$2a$10$r9ghHnVwY2JY0uH9ZjiLl./TBItVIGTYWCFz/TfFVFe/x2oTzXEPy",
+      "id": 2
+    }
+  ],
+  "todos": [
+    {
+      "todo": "Learn HTML",
+      "isCompleted": false,
+      "id": 1
+    },
+    {
+      "todo": "Learn JS",
+      "isCompleted": false,
+      "id": 3
+    },
+    {
+      "todo": "Learn ES6",
+      "isCompleted": false,
+      "id": 4
+    },
+    {
+      "todo": "Learn Angular",
+      "isCompleted": false,
+      "id": 5
+    }
+  ]
+}

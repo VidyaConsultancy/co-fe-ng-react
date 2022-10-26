@@ -1,30 +1,29 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { Todo } from './models/todo.class';
 
 @Injectable({
   providedIn: 'root', // 'root', 'platform', 'any'
 })
 export class TodoService {
-  private todos: Todo[] = [
-    new Todo(1, 'Learn HTML', true),
-    new Todo(2, 'Learn CSS', true),
-    new Todo(3, 'Learn Javascript', false),
-    new Todo(4, 'Learn ES6', true),
-    new Todo(5, 'Learn Angular', false),
-    new Todo(6, 'Learn React', false),
-  ];
-
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   createTodo(todo: string) {
-    this.todos.push(new Todo(this.todos.length + 1, todo));
+    const todoObj = new Todo(todo);
+    return this.http.post<Todo>(`http://localhost:3000/todos`, todoObj);
   }
 
-  getTodos(): Todo[] {
-    return this.todos;
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`http://localhost:3000/todos`);
   }
 
-  getTodoById(id: number): Todo | undefined {
-    return this.todos.find((t) => t.id === id);
+  getTodoById(id: number) {
+    return this.http.get<Todo>(`http://localhost:3000/todos/${id}`);
+  }
+
+  deleteTodo(id: number) {
+    return this.http.delete(`http://localhost:3000/todos/${id}`)
   }
 }
