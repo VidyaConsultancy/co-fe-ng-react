@@ -13,12 +13,7 @@
   ],
   "todos": [
     {
-      "todo": "Learn HTML",
-      "isCompleted": true,
-      "id": 1
-    },
-    {
-      "todo": "Learn JS",
+      "todo": "Learn Javascript",
       "isCompleted": true,
       "id": 3
     },
