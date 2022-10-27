@@ -1,5 +1,5 @@
 <div class="app-auth app-signin">
-  <form class="form-signin" (ngSubmit)="handleLogin()" [formGroup]="userForm">
+  <form class="form-signin" (ngSubmit)="handleLogin()" [formGroup]="userForm" data-test-id="loginForm">
     <div class="form-group">
       <label
         for="username"
@@ -35,6 +35,7 @@
         type="submit"
         class="button"
         [disabled]="userForm.invalid"
+        data-test-id="loginBtn"
       >Login</button>
     </div>
     <div class="form-group"><span>Don't have an account <a

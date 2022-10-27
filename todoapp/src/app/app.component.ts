@@ -29,13 +29,13 @@ export class AppComponent {
     });
   }
 
-  public getTodos() {
-    console.log(this.todoService.getTodos());
-    this.obs.subscribe((value) => {
-      // console.log('sub2', value);
-    });
-    this.obs.next(20);
-  }
+  // public getTodos() {
+  //   console.log(this.todoService.getTodos());
+  //   this.obs.subscribe((value) => {
+  //     // console.log('sub2', value);
+  //   });
+  //   this.obs.next(20);
+  // }
 
   public logout() {
     this.authService.logout();

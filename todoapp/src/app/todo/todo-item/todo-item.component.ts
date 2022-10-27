@@ -27,11 +27,10 @@ export class TodoItemComponent implements OnInit {
   }
 
   handleUpdateTodo() {
-    if (!this.updatedTodo) return;
+    if (!this.updatedTodo.trim()) return;
     this.todoService
       .updateTodo({ ...this.todo, todo: this.updatedTodo })
       .subscribe((res) => {
-        console.log(res);
         this.isEditing = false;
         this.updatedTodo = '';
       });
@@ -46,8 +45,6 @@ export class TodoItemComponent implements OnInit {
   handleTodoToggle(event: any) {
     this.todoService
       .updateTodo({ ...this.todo, isCompleted: event.target.checked })
-      .subscribe((res) => {
-        console.log(res);
-      });
+      .subscribe((res) => {});
   }
 }
