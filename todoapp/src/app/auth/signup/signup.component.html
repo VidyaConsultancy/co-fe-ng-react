@@ -1,5 +1,5 @@
 <div class="app-auth app-signup">
-  <form class="form-signup" (ngSubmit)="handleRegister()" [formGroup]="userForm">
+  <form class="form-signup" (ngSubmit)="handleRegister()" [formGroup]="userForm" data-test-id="signupForm">
     <div class="form-group">
       <label for="username" class="sr-only">Enter your email</label>
       <input type="email" id="username" name="username" class="form-input" placeholder="Here your email" autocomplete="username" formControlName="email">

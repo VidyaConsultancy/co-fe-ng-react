@@ -1,10 +1,16 @@
-<div
-  class="app-todos"
->
+<div class="app-todos">
   <app-todo-header
+    data-test-id="appTodoHeader"
     [appTitle]="appTitle"
     (addTodo)="handleAddTodo($event)"
   ></app-todo-header>
-  <app-todo-list [todos]="todos"></app-todo-list>
-  <app-todo-footer [total]="todos.length" [completed]="completed"></app-todo-footer>
+  <app-todo-list
+    [todos]="todos"
+    data-test-id="appTodoList"
+  ></app-todo-list>
+  <app-todo-footer
+    [total]="todos.length"
+    [completed]="completed"
+    data-test-id="appTodoFooter"
+  ></app-todo-footer>
 </div>
