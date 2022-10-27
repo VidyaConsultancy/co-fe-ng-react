@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { TodosComponent } from '../todos/todos.component';
 
 import { TodoDetailComponent } from './todo-detail.component';
@@ -17,7 +18,7 @@ describe('TodoDetailComponent', () => {
         ]),
         HttpClientTestingModule,
       ],
-      declarations: [TodoDetailComponent],
+      declarations: [TodoDetailComponent, TodoItemComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TodoDetailComponent);

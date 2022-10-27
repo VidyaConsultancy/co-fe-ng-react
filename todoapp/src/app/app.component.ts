@@ -21,7 +21,7 @@ export class AppComponent {
   ) {
     this.obs = new BehaviorSubject(0);
     this.obs.subscribe((value) => {
-      console.log('sub1', value);
+      // console.log('sub1', value);
     });
     this.obs.next(10);
     this.authService.getAccessToken().subscribe((res) => {
@@ -32,7 +32,7 @@ export class AppComponent {
   public getTodos() {
     console.log(this.todoService.getTodos());
     this.obs.subscribe((value) => {
-      console.log('sub2', value);
+      // console.log('sub2', value);
     });
     this.obs.next(20);
   }

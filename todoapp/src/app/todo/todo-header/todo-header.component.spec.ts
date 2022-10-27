@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { TodoHeaderComponent } from './todo-header.component';
 
@@ -8,6 +9,7 @@ describe('TodoHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ FormsModule ],
       declarations: [ TodoHeaderComponent ]
     })
     .compileComponents();
