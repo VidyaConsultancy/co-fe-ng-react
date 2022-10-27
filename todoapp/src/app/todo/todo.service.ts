@@ -8,6 +8,8 @@ import { Todo } from './models/todo.class';
   providedIn: 'root', // 'root', 'platform', 'any'
 })
 export class TodoService {
+  ops: string[] = [];
+  
   constructor(private http: HttpClient) {}
 
   createTodo(todo: string) {
@@ -29,5 +31,10 @@ export class TodoService {
 
   updateTodo(todo: Todo) {
     return this.http.put<Todo>(`http://localhost:3000/todos/${todo.id}`, todo);
+  }
+
+  add(x: number, y: number) {
+    this.ops.push('add');
+    return x + y;
   }
 }
