@@ -4,11 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoModule } from './todo/todo.module';
+import { BgcolorDirective } from './common/directives/bgcolor/bgcolor.directive';
+import { FilesizePipe } from './common/pipes/filesize/filesize.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, TodoModule, HttpClientModule],
+  declarations: [AppComponent, BgcolorDirective, FilesizePipe],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

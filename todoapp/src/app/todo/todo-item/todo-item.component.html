@@ -3,6 +3,7 @@
     <input type="checkbox" name="todo-toggle" [id]="todo.id" [checked]="todo.isCompleted" (change)="handleTodoToggle($event)" />
     <span *ngIf="!isEditing">{{todo.todo }}</span>
     <input *ngIf="isEditing" type="text" [(ngModel)]="updatedTodo" class="form-input" />
+    <div>{{ now | date:dateFormat }}</div>
   </label>
   <div class="todo-actions">
     <a class="button button-icon" [routerLink]="['/todos', todo.id]" *ngIf="!isDetail">Detail</a>

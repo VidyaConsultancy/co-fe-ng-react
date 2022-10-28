@@ -25,7 +25,8 @@ describe('TodosComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, FormsModule],
-      declarations: [ TodosComponent, TodoHeaderComponent, TodoFooterComponent, TodoListComponent ]
+      declarations: [ TodosComponent, TodoHeaderComponent, TodoFooterComponent, TodoListComponent ],
+      providers: [TodoService]
     })
     .compileComponents();
 

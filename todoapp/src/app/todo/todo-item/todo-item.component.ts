@@ -16,6 +16,8 @@ export class TodoItemComponent implements OnInit {
 
   updatedTodo: string = '';
   isEditing: boolean = false;
+  now: Date = new Date();
+  dateFormat = 'dd-MM-yyyy';
 
   constructor(private todoService: TodoService, private router: Router) {}
 
