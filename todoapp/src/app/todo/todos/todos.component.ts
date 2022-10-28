@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Todo } from '../models/todo.class';
 import { TodoService } from '../todo.service';
@@ -13,10 +14,13 @@ export class TodosComponent implements OnInit {
   public todos: Todo[] = [];
   public completed: number = 0;
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.fetchTodos();
+    this.route.data.subscribe((data) => {
+      this.todos = data['todos'];
+    })
+    // this.fetchTodos();
   }
 
   handleAddTodo(newTodo: string) {
