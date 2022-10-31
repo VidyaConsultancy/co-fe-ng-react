@@ -1,63 +1,36 @@
 import React, { useState, Component } from "react";
+import { TodoFooter } from "../todo-footer/TodoFooter";
+import { TodoHeader } from "../todo-header/TodoHeader";
+import { TodoList } from "../todo-list/TodoList";
+import "./Todos.css";
 
 // react hooks introduced in 16.8v
 // useState, useEffect, useCallback, useLayoutEffect, useReducer, useRef, useId
 
 export const Todos = () => {
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState("");
-  const todoRef = React.useRef(null);
+  const [completed, setCompleted] = useState(0);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const addTodo = (newTodo) => {
     if (newTodo.trim().length === 0) return false;
-    setTodos([
+    const updatedTodos = [
       ...todos,
       { id: todos.length + 1, todo: newTodo, isCompleted: false },
-    ]);
-    setNewTodo('');
+    ];
+    setTodos(updatedTodos);
+    calCompletedTodos(updatedTodos);
   };
 
-  const handleOnChange = (e) => {
-    setNewTodo(e.target.value);
+  const calCompletedTodos = (t) => {
+    const completed = t.filter((todo) => todo.isCompleted);
+    setCompleted(completed.length);
   };
 
   return (
-    <div className="container">
-      <h2 title={"Todos"}>Todos</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="todo" className="sr-only">
-            What would you like to do?
-          </label>
-          <input
-            ref={todoRef}
-            value={newTodo}
-            onChange={handleOnChange}
-            type="text"
-            id="todo"
-            name="todo"
-            className="form-input"
-            placeholder="What would you like to do?"
-          />
-        </div>
-        <div className="form-group">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-      <ul className="todos">
-        {todos.length ? (
-          todos.map((todo) => (
-            <li key={todo.id} className="todo-item">
-              {todo.todo}
-            </li>
-          ))
-        ) : (
-          <div className="todo-zero-state">
-            You don't have any todos yet. Create one here
-          </div>
-        )}
-      </ul>
+    <div className="container app-todos">
+      <TodoHeader handleSubmit={addTodo} />
+      <TodoList todos={todos} />
+      <TodoFooter total={todos.length} completed={completed} />
     </div>
   );
 };
