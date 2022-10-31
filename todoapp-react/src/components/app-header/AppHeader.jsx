@@ -3,28 +3,28 @@ import { NavLink } from 'react-router-dom';
 
 export const AppHeader = () => {
   return (
-    <header class="header">
-      <nav class="nav">
+    <header className="header">
+      <nav className="nav">
         <NavLink to="/" className="logo">
           Todo
         </NavLink>
-        <menu class="navbar">
-          <li class="nav-item">
+        <menu className="navbar">
+          <li className="nav-item">
             <NavLink to="/" className="nav-link">
               Home
             </NavLink>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <NavLink to="/todos" className="nav-link">
               Todos
             </NavLink>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <button className="nav-link button">
               Logout
             </button>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <NavLink to="/auth/register" className="nav-link">
               Register
             </NavLink>

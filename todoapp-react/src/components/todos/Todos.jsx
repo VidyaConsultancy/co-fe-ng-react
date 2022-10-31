@@ -1,4 +1,5 @@
 import React, { useState, Component } from "react";
+import axios from 'axios';
 import { TodoFooter } from "../todo-footer/TodoFooter";
 import { TodoHeader } from "../todo-header/TodoHeader";
 import { TodoList } from "../todo-list/TodoList";
@@ -25,6 +26,28 @@ export const Todos = () => {
     const completed = t.filter((todo) => todo.isCompleted);
     setCompleted(completed.length);
   };
+
+  const fetchTodos = () => {
+    fetch(`http://localhost:4000/todos`, {
+      method: 'GET'
+    }).then(res => {
+      return res.json(); 
+    }).then(data => {
+      console.log(data);
+      setTodos(data);
+    }).catch(error => console.error(error));
+  }
+  
+  const fetchTodosAxios = () => {
+    axios.get(`http://localhost:4000/todos`).then(res => {
+      console.log(res);
+      setTodos(res.data); 
+    }).catch(error => console.error(error));
+  }
+
+  React.useEffect(() => {
+    fetchTodosAxios();
+  }, []);
 
   return (
     <div className="container app-todos">

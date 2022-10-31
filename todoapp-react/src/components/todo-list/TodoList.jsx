@@ -1,7 +1,7 @@
 import React from "react";
 import { TodoItem } from "../todo-item/TodoItem";
 
-export const TodoList = ({ todos }) => {
+export const TodoList = ({ todos = [] }) => {
   return (
     <ul className="todos">
       {todos.length ? (
