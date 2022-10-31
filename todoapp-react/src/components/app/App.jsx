@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AppHeader } from '../app-header/AppHeader';
+import { TodoDetail } from '../todo-detail/TodoDetail';
 import { Todos } from '../todos/Todos';
 import './App.css';
 
@@ -10,6 +11,7 @@ function App() {
       <AppHeader />
       <main className="app-main">
         <Routes>
+          <Route path='/todos/:todoId' element={<TodoDetail />} />
           <Route path='/todos' element={<Todos />} />
           <Route path='/' exact element={<h1>Base Path</h1>} />
         </Routes>

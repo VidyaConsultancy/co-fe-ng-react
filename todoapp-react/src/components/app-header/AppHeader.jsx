@@ -16,7 +16,7 @@ export const AppHeader = () => {
           </li>
           <li class="nav-item">
             <NavLink to="/todos" className="nav-link">
-              Todo
+              Todos
             </NavLink>
           </li>
           <li class="nav-item">

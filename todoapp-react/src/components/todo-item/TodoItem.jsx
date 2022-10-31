@@ -1,6 +1,9 @@
 import React from "react";
+import { Link, useNavigate } from 'react-router-dom';
 
 export const TodoItem = ({ todo }) => {
+  const navigate = useNavigate();
+
   return (
     <li className="todos-item">
       <label htmlFor="">
@@ -8,7 +11,18 @@ export const TodoItem = ({ todo }) => {
         {todo.todo}
       </label>
       <div className="todos-actions">
-        <button className="button button-icon button-default">Detail</button>
+        <Link
+          to={`/todos/${todo.id}`}
+          className="button button-icon button-default"
+        >
+          Detail
+        </Link>
+        <button
+          className="button button-icon button-default"
+          onClick={() => navigate(`/todos/${todo.id}`)}
+        >
+          Detail
+        </button>
         <button className="button button-icon button-info">Edit</button>
         <button className="button button-icon button-danger">Delete</button>
       </div>
