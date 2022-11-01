@@ -17,21 +17,21 @@ export const TodoHeader = ({ handleSubmit }) => {
           setNewTodo('');
         }}
       >
-        <div className="form-group">
-          <label htmlFor="todo" className="sr-only">
-            What would you like to do?
-          </label>
-          <input
-            value={newTodo}
-            onChange={handleOnChange}
-            type="text"
-            id="todo"
-            name="todo"
-            className="form-input"
-            placeholder="What would you like to do?"
-          />
-        </div>
-        <div className="form-group">
+        <div className="form-flex">
+          <div className="form-group">
+            <label htmlFor="todo" className="sr-only">
+              What would you like to do?
+            </label>
+            <input
+              value={newTodo}
+              onChange={handleOnChange}
+              type="text"
+              id="todo"
+              name="todo"
+              className="form-input"
+              placeholder="What would you like to do?"
+            />
+          </div>
           <button type="submit" className="button button-default">Submit</button>
         </div>
       </form>

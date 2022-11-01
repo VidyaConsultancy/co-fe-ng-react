@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan, faPenToSquare, faEye, faSave } from '@fortawesome/free-regular-svg-icons';
 
 export const TodoItem = ({
   todo,
@@ -17,12 +19,11 @@ export const TodoItem = ({
 
   return (
     <li className="todos-item">
-      <label htmlFor="todo-toggle">
+      <label htmlFor="todo-toggle" className="todo-toggle">
         <input
           type="checkbox"
           id="todo-toggle"
           name="todo-toggle"
-          className="todo-toggle"
           checked={todo.isCompleted}
           onChange={(e) =>
             handleUpdateTodo({ ...todo, isCompleted: e.target.checked })
@@ -37,7 +38,7 @@ export const TodoItem = ({
             onChange={(e) => setUpdatedTodo(e.target.value)}
           />
         ) : (
-          todo.todo
+          <span className="todo-title">{todo.todo}</span>
         )}
       </label>
       <div className="todos-actions">
@@ -46,7 +47,7 @@ export const TodoItem = ({
             to={`/todos/${todo.id}`}
             className="button button-icon button-default"
           >
-            Detail
+            <FontAwesomeIcon icon={faEye} />
           </Link>
         ) : null}
         {/* <button
@@ -57,24 +58,24 @@ export const TodoItem = ({
         </button> */}
         {isEditing ? (
           <button className="button button-icon button-info" onClick={onEdit}>
-            Save
+            <FontAwesomeIcon icon={faSave} />
           </button>
         ) : (
           <button
             className="button button-icon button-info"
             onClick={() => {
               setIsEditing(true);
-              setUpdatedTodo(todo.todo)
+              setUpdatedTodo(todo.todo);
             }}
           >
-            Edit
+            <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         )}
         <button
           className="button button-icon button-danger"
           onClick={() => handleTodoDelete(todo.id)}
         >
-          Delete
+          <FontAwesomeIcon icon={faTrashCan} />
         </button>
       </div>
     </li>

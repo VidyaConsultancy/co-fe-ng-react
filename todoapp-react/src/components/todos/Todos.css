@@ -5,8 +5,8 @@
   margin-inline: auto;
 }
 
-.todo-header {
-  padding-bottom: 0.5em;
+.todos-header {
+  padding: 0 1em 0.5em;
   background-color: #fff;
   border-bottom: 3px double #dbdbdb;
 }
@@ -21,9 +21,6 @@
 .todos-item {
   padding: 0.5em 1em;
   border-bottom: 1px solid #dbdbdb;
-}
-
-.todo {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,6 +29,9 @@
 .todo-toggle {
   flex: 1;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5em;
 }
 
 .todos-title {

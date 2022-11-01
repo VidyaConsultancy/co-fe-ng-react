@@ -32,6 +32,7 @@ export const Todos = () => {
       await deleteTodo(todoId);
       const filteredTodos = todos.filter(todo => todo.id !== todoId);
       setTodos(filteredTodos);
+      calCompletedTodos(filteredTodos);
     } catch (e) {
       setError(e);
     }
@@ -45,6 +46,7 @@ export const Todos = () => {
         const updatedTodos = [...todos]
         updatedTodos.splice(index, 1, res.data);
         setTodos(updatedTodos);
+        calCompletedTodos(updatedTodos);
       }
     } catch (e) {
       setError(e)
@@ -71,6 +73,7 @@ export const Todos = () => {
     try {
       const res = await fetchTodos();
       setTodos(res.data);
+      calCompletedTodos(res.data);
     } catch (e) {
       setError(e);
     }
