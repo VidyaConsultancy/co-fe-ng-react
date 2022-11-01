@@ -19,10 +19,10 @@ export const TodoItem = ({
 
   return (
     <li className="todos-item">
-      <label htmlFor="todo-toggle" className="todo-toggle">
+      <label htmlFor={`todo-toggle-${todo.id}`} className="todo-toggle">
         <input
           type="checkbox"
-          id="todo-toggle"
+          id={`todo-toggle-${todo.id}`}
           name="todo-toggle"
           checked={todo.isCompleted}
           onChange={(e) =>
