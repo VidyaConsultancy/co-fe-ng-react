@@ -1,4 +1,25 @@
 {
   "users": [],
-  "todos": []
+  "todos": [
+    {
+      "todo": "Learn HTML5",
+      "isCompleted": true,
+      "id": 1
+    },
+    {
+      "todo": "Learn CSS3",
+      "isCompleted": false,
+      "id": 2
+    },
+    {
+      "todo": "Learn Javascript & ES6",
+      "isCompleted": true,
+      "id": 3
+    },
+    {
+      "todo": "Learn Angular 10",
+      "isCompleted": false,
+      "id": 4
+    }
+  ]
 }

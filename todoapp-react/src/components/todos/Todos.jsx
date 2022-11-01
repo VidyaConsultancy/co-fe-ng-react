@@ -1,5 +1,5 @@
 import React, { useState, Component } from "react";
-import axios from 'axios';
+import { fetchTodos, addTodo, deleteTodo, updateTodo } from "../../services/todos.service";
 import { TodoFooter } from "../todo-footer/TodoFooter";
 import { TodoHeader } from "../todo-header/TodoHeader";
 import { TodoList } from "../todo-list/TodoList";
@@ -11,23 +11,52 @@ import "./Todos.css";
 export const Todos = () => {
   const [todos, setTodos] = useState([]);
   const [completed, setCompleted] = useState(0);
+  const [error, setError] = useState(null);
 
-  const addTodo = (newTodo) => {
-    if (newTodo.trim().length === 0) return false;
-    const updatedTodos = [
-      ...todos,
-      { id: todos.length + 1, todo: newTodo, isCompleted: false },
-    ];
-    setTodos(updatedTodos);
-    calCompletedTodos(updatedTodos);
+  const addNewTodo = async (todoTitle) => {
+    if (todoTitle.trim().length === 0) return false;
+
+    const newTodo = { todo: todoTitle, isCompleted: false };
+    try {
+      const res = await addTodo(newTodo);
+      const updatedTodos = [...todos, res.data];
+      setTodos(updatedTodos);
+      calCompletedTodos(updatedTodos);
+    } catch (e) {
+      setError(e);
+    }
   };
+
+  const handleTodoDelete = async (todoId) => {
+    try {
+      await deleteTodo(todoId);
+      const filteredTodos = todos.filter(todo => todo.id !== todoId);
+      setTodos(filteredTodos);
+    } catch (e) {
+      setError(e);
+    }
+  };
+
+  const handleUpdateTodo = async (updatedTodo) => {
+    try {
+      const res = await updateTodo({ ...updatedTodo });
+      const index = todos.findIndex((todo) => todo.id === updatedTodo.id);
+      if(index) {
+        const updatedTodos = [...todos]
+        updatedTodos.splice(index, 1, res.data);
+        setTodos(updatedTodos);
+      }
+    } catch (e) {
+      setError(e)
+    }
+  }
 
   const calCompletedTodos = (t) => {
     const completed = t.filter((todo) => todo.isCompleted);
     setCompleted(completed.length);
   };
 
-  const fetchTodos = () => {
+  /* const fetchTodos = () => {
     fetch(`http://localhost:4000/todos`, {
       method: 'GET'
     }).then(res => {
@@ -36,23 +65,30 @@ export const Todos = () => {
       console.log(data);
       setTodos(data);
     }).catch(error => console.error(error));
-  }
-  
-  const fetchTodosAxios = () => {
-    axios.get(`http://localhost:4000/todos`).then(res => {
-      console.log(res);
-      setTodos(res.data); 
-    }).catch(error => console.error(error));
-  }
+  } */
+
+  const getTodos = async () => {
+    try {
+      const res = await fetchTodos();
+      setTodos(res.data);
+    } catch (e) {
+      setError(e);
+    }
+  };
 
   React.useEffect(() => {
-    fetchTodosAxios();
+    getTodos();
   }, []);
 
   return (
     <div className="container app-todos">
-      <TodoHeader handleSubmit={addTodo} />
-      <TodoList todos={todos} />
+      {error ? <small>{error.message}</small> : null}
+      <TodoHeader handleSubmit={addNewTodo} />
+      <TodoList
+        todos={todos}
+        handleTodoDelete={handleTodoDelete}
+        handleUpdateTodo={handleUpdateTodo}
+      />
       <TodoFooter total={todos.length} completed={completed} />
     </div>
   );
