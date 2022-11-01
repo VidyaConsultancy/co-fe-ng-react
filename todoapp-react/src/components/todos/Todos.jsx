@@ -1,5 +1,12 @@
 import React, { useState, Component } from "react";
-import { fetchTodos, addTodo, deleteTodo, updateTodo } from "../../services/todos.service";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchTodos,
+  addTodo,
+  deleteTodo,
+  updateTodo,
+} from "../../services/todos.service";
+import { getAllTodo } from "../../store/todo/todo.slice";
 import { TodoFooter } from "../todo-footer/TodoFooter";
 import { TodoHeader } from "../todo-header/TodoHeader";
 import { TodoList } from "../todo-list/TodoList";
@@ -9,6 +16,8 @@ import "./Todos.css";
 // useState, useEffect, useCallback, useLayoutEffect, useReducer, useRef, useId
 
 export const Todos = () => {
+  const dispatch = useDispatch();
+  const todoState = useSelector((state) => state.todo);
   const [todos, setTodos] = useState([]);
   const [completed, setCompleted] = useState(0);
   const [error, setError] = useState(null);
@@ -20,7 +29,6 @@ export const Todos = () => {
     try {
       const res = await addTodo(newTodo);
       const updatedTodos = [...todos, res.data];
-      setTodos(updatedTodos);
       calCompletedTodos(updatedTodos);
     } catch (e) {
       setError(e);
@@ -30,8 +38,7 @@ export const Todos = () => {
   const handleTodoDelete = async (todoId) => {
     try {
       await deleteTodo(todoId);
-      const filteredTodos = todos.filter(todo => todo.id !== todoId);
-      setTodos(filteredTodos);
+      const filteredTodos = todos.filter((todo) => todo.id !== todoId);
       calCompletedTodos(filteredTodos);
     } catch (e) {
       setError(e);
@@ -42,16 +49,15 @@ export const Todos = () => {
     try {
       const res = await updateTodo({ ...updatedTodo });
       const index = todos.findIndex((todo) => todo.id === updatedTodo.id);
-      if(index) {
-        const updatedTodos = [...todos]
+      if (index) {
+        const updatedTodos = [...todos];
         updatedTodos.splice(index, 1, res.data);
-        setTodos(updatedTodos);
         calCompletedTodos(updatedTodos);
       }
     } catch (e) {
-      setError(e)
+      setError(e);
     }
-  }
+  };
 
   const calCompletedTodos = (t) => {
     const completed = t.filter((todo) => todo.isCompleted);
@@ -65,30 +71,28 @@ export const Todos = () => {
       return res.json(); 
     }).then(data => {
       console.log(data);
-      setTodos(data);
     }).catch(error => console.error(error));
   } */
 
-  const getTodos = async () => {
-    try {
-      const res = await fetchTodos();
-      setTodos(res.data);
-      calCompletedTodos(res.data);
-    } catch (e) {
-      setError(e);
-    }
-  };
-
   React.useEffect(() => {
+    const getTodos = async () => {
+      try {
+        const res = await fetchTodos();
+        dispatch(getAllTodo({ todos: res.data }));
+        calCompletedTodos(res.data);
+      } catch (e) {
+        setError(e);
+      }
+    };
     getTodos();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="container app-todos">
       {error ? <small>{error.message}</small> : null}
       <TodoHeader handleSubmit={addNewTodo} />
       <TodoList
-        todos={todos}
+        todos={todoState.todos}
         handleTodoDelete={handleTodoDelete}
         handleUpdateTodo={handleUpdateTodo}
       />
