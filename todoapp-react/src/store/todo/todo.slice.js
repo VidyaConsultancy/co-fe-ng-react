@@ -66,6 +66,7 @@ const todoSlice = createSlice({
 
 export const { fetchAllFailure, fetchAllStart, fetchAllSuccess, addTodoStart, addTodoFailure, addTodoSuccess, updateTodoFailure, updateTodoStart, updateTodoSuccess, deleteTodoSuccess } = todoSlice.actions;
 export const todoReducer = todoSlice.reducer;
+export const initialState = todoSlice.getInitialState();
 
 /* const reducer = (state = { isFetching: false }, action) => {
   if(action.type === 'something') {
