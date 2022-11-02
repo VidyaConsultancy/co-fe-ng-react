@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todos should render component 1`] = `
+<body>
+  <div>
+    <div
+      class="container app-todos"
+      data-testid="todosContainer"
+    >
+      <div
+        class="todos-header"
+      >
+        <h2
+          class="todos-title"
+          title="Todos"
+        >
+          Todos
+        </h2>
+        <form
+          data-testid="addTodoForm"
+        >
+          <div
+            class="form-flex"
+          >
+            <div
+              class="form-group"
+            >
+              <label
+                class="sr-only"
+                for="todo"
+              >
+                What would you like to do?
+              </label>
+              <input
+                class="form-input"
+                id="todo"
+                name="todo"
+                placeholder="What would you like to do?"
+                type="text"
+                value=""
+              />
+            </div>
+            <button
+              class="button button-default"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+      <ul
+        class="todos"
+      >
+        <div
+          class="todo-zero-state"
+        >
+          You don't have any todos yet. Create one here
+        </div>
+      </ul>
+      <div
+        class="todos-footer"
+      />
+    </div>
+  </div>
+</body>
+`;

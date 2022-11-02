@@ -47,7 +47,7 @@ export const Todos = () => {
   }, [dispatch]);
 
   return (
-    <div className="container app-todos">
+    <div className="container app-todos" data-testid="todosContainer">
       {todoState.error ? <small>{todoState.error.message}</small> : null}
       <TodoHeader handleSubmit={handleAddTodo} />
       <TodoList

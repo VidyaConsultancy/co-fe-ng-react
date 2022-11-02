@@ -16,6 +16,7 @@ export const TodoHeader = ({ handleSubmit }) => {
           handleSubmit(newTodo);
           setNewTodo('');
         }}
+        data-testid="addTodoForm"
       >
         <div className="form-flex">
           <div className="form-group">
