@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllTodos,
@@ -78,7 +78,7 @@ export const Todos = () => {
  * Phase III Unmounting ->  invoked only once
  * componentWillUnmount
  */
-export class TodosComponent extends Component {
+/* export class TodosComponent extends Component {
   constructor(props) {
     super(props);
     this.appTitle = "Todos";
@@ -104,3 +104,4 @@ export class TodosComponent extends Component {
     );
   }
 }
+ */

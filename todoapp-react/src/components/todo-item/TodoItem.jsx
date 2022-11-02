@@ -74,6 +74,7 @@ export const TodoItem = ({
         <button
           className="button button-icon button-danger"
           onClick={() => handleTodoDelete(todo.id)}
+          data-testid="deleteTodoButton"
         >
           <FontAwesomeIcon icon={faTrashCan} />
         </button>
