@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, connect } from "react-redux";
 import {
   fetchAllTodos,
   addNewTodo,
@@ -78,7 +78,7 @@ export const Todos = () => {
  * Phase III Unmounting ->  invoked only once
  * componentWillUnmount
  */
-/* export class TodosComponent extends Component {
+export class TodosComponent extends React.Component {
   constructor(props) {
     super(props);
     this.appTitle = "Todos";
@@ -87,6 +87,10 @@ export const Todos = () => {
       todos: ["Learn HTML"],
     };
     // this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchTodos();
   }
 
   handleClick = () => {
@@ -100,8 +104,22 @@ export const Todos = () => {
           {this.state.title} || {this.appTitle}
         </h2>
         <button onClick={this.handleClick}>Click Me</button>
+        <TodoList
+          todos={this.props.todos}
+        />
       </div>
     );
   }
 }
- */
+const mapStateToProps = (state) => ({
+  todos: state.todo.todos,
+  isFetching: state.todo.isFetching,
+  accessToken: state.auth.accessToken,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  addNewTodo: (todo) => dispatch(addNewTodo(todo)),
+  fetchTodos: () => dispatch(fetchAllTodos())
+})
+export const TodosComponentContainer = connect(mapStateToProps, mapDispatchToProps)(TodosComponent);
+

@@ -10,3 +10,6 @@ export const store = configureStore({
     todo: todoReducer,
   }
 })
+
+// store.dispatch()
+// store.getState();
