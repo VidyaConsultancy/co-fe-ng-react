@@ -32,3 +32,26 @@ npm install --save-dev package-name
 - `root` - service will be singleton
 - `platform` - service will be singleton among more than one angular app running in the same window
 - `any` - singleton service for eagerly loaded modules and singletone service for each lazily loaded modules
+
+
+# Git
+
+## Git areas
+working area => git add [files]
+staging area => git commit
+committed changes
+
+## Git combine changes
+- git merge command
+  - git checkout <target-branch>
+  - git merge <source-branch>
+  the above two commands will take changes from source branch and place them into target branch
+  eg. if we need to merge dev branch changes into main then the commands will be
+  - git checkout main
+  - git merge dev
+- git rebase command
+  - git checkout <target-branch>
+  - git rebase <source-branch>
+  eg. if we need to merge main branch changes into dev branch then the commands will be
+  - git checkout dev
+  - git rebase main
